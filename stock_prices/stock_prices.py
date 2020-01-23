@@ -3,12 +3,12 @@
 import argparse
 
 def find_max_profit(prices):
-  # dictionary to hold all calculations
+  # list to hold all calculations
   max_profits = []
 
-  # pointers for the indexes
   for x in range(0, len(prices) - 1):
     # Check if the left number is less then right number
+    # if true, skip it because we don't want negative profits
     if(prices[x] > prices[x + 1]):
       continue
 
