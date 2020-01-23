@@ -2,8 +2,24 @@
 
 import math
 
+# Firt Pass
+# Just check if all of the values of the of the inputs are less than the available outputs
+# 
+
 def recipe_batches(recipe, ingredients):
-  pass 
+    recipe_copy = recipe.copy()
+    ing_copy = ingredients.copy()
+
+    # Go ahead and check if any ingredients are missing
+    for rec_ing in recipe_copy.keys():
+      if(not rec_ing in ing_copy or ing_copy[rec_ing] < recipe_copy[rec_ing]):
+        return 0
+
+    batches = []
+    for rec_ing, need in recipe_copy.items():
+      batches.append(math.floor(ing_copy[rec_ing] // need))
+    
+    return min(batches)  
 
 
 if __name__ == '__main__':

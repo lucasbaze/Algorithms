@@ -6,7 +6,26 @@ import sys
 # a solution that is more efficient than the naive 
 # recursive solution
 def eating_cookies(n, cache=None):
-  pass
+
+  if( n <= 1 ):
+    return 1
+  elif(n == 2):
+    return 2
+  elif(n == 3):
+    return 4
+
+  # Default case because NoneType error is stupid
+  if(cache == None):
+    return eating_cookies(n -1) + eating_cookies(n - 2) + eating_cookies(n -3 )
+
+  else: 
+    if(cache[n] > 0):
+      return cache[n]
+
+    cache[n] = eating_cookies(n - 1, cache) + eating_cookies(n - 2, cache) + eating_cookies(n - 3, cache)
+
+  return cache[n]
+  
 
 if __name__ == "__main__":
   if len(sys.argv) > 1:
